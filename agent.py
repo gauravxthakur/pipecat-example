@@ -50,7 +50,12 @@ async def main():
         ),
     )
 
-    context = LLMContext()
+    context = LLMContext([
+        {
+            "role": "system",
+            "content": "You are a helpful AI voice assistant. Speak concisely.",
+        }
+    ])
     aggregators = LLMContextAggregatorPair(
         context,
         user_params=LLMUserAggregatorParams(vad_analyzer=SileroVADAnalyzer()),
